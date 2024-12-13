@@ -32,7 +32,7 @@ public class Database {
                 + "name VARCHAR(100) NOT NULL, "
                 + "price DECIMAL(10, 2), "
                 + "description TEXT, "
-                + "phoneNumber VARCHAR(20), "
+                + "telegramHandle VARCHAR(50), "
                 + "photoId VARCHAR(100), "
                 + "category VARCHAR(50)"
                 + ");";
@@ -59,14 +59,14 @@ public class Database {
             return false; // Возвращаем false в случае ошибки
         }
     }
-    public static void insertProduct(String name, String category, double price, String description, String phoneNumber, String photoId) {
-        String sql = "INSERT INTO Products (name, category, price, description, phoneNumber, photoId) VALUES (?, ?, ?, ?, ?, ?)";
+    public static void insertProduct(String name, String category, double price, String description, String telegramHandle, String photoId) {
+        String sql = "INSERT INTO Products (name, category, price, description, telegramHandle, photoId) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, name);
             pstmt.setString(2, category);
             pstmt.setDouble(3, price);
             pstmt.setString(4, description);
-            pstmt.setString(5, phoneNumber);
+            pstmt.setString(5, telegramHandle);
             pstmt.setString(6, photoId);
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -84,7 +84,7 @@ public class Database {
                         new Category(rs.getString("category")),
                         rs.getBigDecimal("price"),
                         rs.getString("description"),
-                        rs.getString("phoneNumber"),
+                        rs.getString("telegramHandle"),
                         rs.getString("photoId")
 
                 ));
@@ -107,7 +107,7 @@ public class Database {
                             new Category(rs.getString("category")),
                             rs.getBigDecimal("price"),
                             rs.getString("description"),
-                            rs.getString("phoneNumber"),
+                            rs.getString("telegramHandle"),
                             rs.getString("photoId")
                     ));
                 }

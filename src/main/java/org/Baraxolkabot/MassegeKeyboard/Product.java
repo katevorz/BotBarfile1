@@ -8,16 +8,16 @@ public class Product {
     private final String photoId;
     private final String description;
     private final BigDecimal price;
-    private final String phoneNumber;
+    private final String telegramHandle;
     private final Category categoryName;
 
 
-    public Product(String name,Category categoryName, BigDecimal price, String description, String phoneNumber, String photoId) {
+    public Product(String name,Category categoryName, BigDecimal price, String description, String telegramHandle, String photoId) {
         this.name = name;
         this.categoryName = categoryName;
         this.price = price;
         this.description = description;
-        this.phoneNumber = phoneNumber;
+        this.telegramHandle = formatTelegramHandle(telegramHandle);
         this.photoId = photoId;
     }
 
@@ -37,12 +37,19 @@ public class Product {
         return price;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getTelegramHandle() {
+        return telegramHandle;
     }
 
     public Category getCategory() {
         return categoryName;
+    }
+
+    private String formatTelegramHandle(String handle) {
+        if (handle == null) {
+        return "@unknown";
+        }
+        return handle.startsWith("@") ? handle : "@" + handle;
     }
 
 }

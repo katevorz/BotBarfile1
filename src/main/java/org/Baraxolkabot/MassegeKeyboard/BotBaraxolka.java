@@ -44,7 +44,7 @@ public class BotBaraxolka extends TelegramLongPollingBot {
                 product.getCategory().getName(),
                 Double.parseDouble(product.getPrice().toString()),
                 product.getDescription(),
-                product.getPhoneNumber(),
+                product.getTelegramHandle(),
                 product.getPhotoId()
 
         );
@@ -103,11 +103,13 @@ public class BotBaraxolka extends TelegramLongPollingBot {
                     } else if (descriptionState.get(chatId).isEmpty()) {
                         // Ожидаем описание товара
                         descriptionState.put(chatId, messageText);
-                        sendResponse(chatId, "Введите номер телефона:");
-                        phoneState.put(chatId, ""); // Инициализируем состояние номера телефона
-                    } else if (phoneState.get(chatId).isEmpty()) {
-                        // Ожидаем номер телефона
-                        phoneState.put(chatId, messageText);
+
+                        String telegramHandle = update.getMessage().getFrom().getUserName();
+                        if (telegramHandle == null && !telegramHandle.startsWith("@")) {
+                            telegramHandle = "@" + telegramHandle; // Handle case where user has no username
+                        }
+
+                        phoneState.put(chatId, telegramHandle); // Save Telegram handle
                         sendResponse(chatId, "Теперь отправьте фото товара:");
                     }
                 } else {
@@ -285,7 +287,7 @@ public class BotBaraxolka extends TelegramLongPollingBot {
         String caption = "Товар: " + product.getName() + "\n" +
                 "Описание: " + product.getDescription() + "\n" +
                 "Цена: " + product.getPrice() + "\n" +
-                "Телефон продавца: " + product.getPhoneNumber();
+                "Продавца: " + product.getTelegramHandle();
 
         photoMessage.setCaption(caption);
 
