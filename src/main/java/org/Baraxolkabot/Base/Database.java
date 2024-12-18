@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Database {
-    private static final String URL = "jdbc:mysql://localhost:3306/baraxolkadatabase";
+    private static final String URL = "jdbc:mysql://localhost:3306/Baraxolochkabot";
     private static final String USER = "root";
     private static final String PASSWORD = "root";
     private static Connection connection = null;
@@ -59,6 +59,35 @@ public class Database {
             return false; // Возвращаем false в случае ошибки
         }
     }
+    public static Product getProductByName(String productName) {
+        Product product = null;
+        String query = "SELECT * FROM products WHERE name = ?";
+
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, productName);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                // Создаем объект Product из данных из базы
+                product = new Product(
+                        resultSet.getString("name"),
+                        new Category(resultSet.getString("category")),
+                        resultSet.getBigDecimal("price"),
+                        resultSet.getString("description"),
+                        resultSet.getString("telegramHandle"),
+                        resultSet.getString("photoId")
+                );
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return product;
+    }
+
     public static void insertProduct(String name, String category, double price, String description, String telegramHandle, String photoId) {
         String sql = "INSERT INTO Products (name, category, price, description, telegramHandle, photoId) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
