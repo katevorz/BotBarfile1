@@ -1,5 +1,5 @@
 package org.Baraxolkabot.Base;
-import org.Baraxolkabot.MassegeKeyboard.Product;
+import org.Baraxolkabot.BotBaraxolka.Product;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Database {
-    private static final String URL = "jdbc:mysql://localhost:3306/Baraxolochkabot";
+    private static final String URL = "jdbc:mysql://localhost:3306/Baraxolochkabot_";
     private static final String USER = "root";
     private static final String PASSWORD = "root";
     private static Connection connection = null;

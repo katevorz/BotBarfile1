@@ -1,4 +1,4 @@
-package org.Baraxolkabot.MassegeKeyboard;
+package org.Baraxolkabot.BotBaraxolka;
 
 import org.Baraxolkabot.Category.Category;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;

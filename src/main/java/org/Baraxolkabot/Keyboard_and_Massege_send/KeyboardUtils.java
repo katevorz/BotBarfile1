@@ -1,6 +1,7 @@
-package org.Baraxolkabot.MassegeKeyboard;
+package org.Baraxolkabot.Keyboard_and_Massege_send;
 
 import org.Baraxolkabot.Category.Category;
+import org.Baraxolkabot.BotBaraxolka.Product;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 

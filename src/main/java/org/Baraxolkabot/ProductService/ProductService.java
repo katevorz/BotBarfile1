@@ -237,16 +237,13 @@ public class ProductService {
     }
 
     private String getUsernameFromUpdate(Update update) {
-        // Проверяем, есть ли @username
+
         if (update.getMessage().getFrom().getUserName() != null) {
             return "@" + update.getMessage().getFrom().getUserName();
         }
 
-        // Если @username отсутствует, собираем имя и фамилию
         String firstName = update.getMessage().getFrom().getFirstName();
         String lastName = update.getMessage().getFrom().getLastName();
         return firstName + (lastName != null ? " " + lastName : "");
     }
 }
-
-

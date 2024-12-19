@@ -1,4 +1,4 @@
-package org.Baraxolkabot.MassegeKeyboard;
+package org.Baraxolkabot.BotBaraxolka;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class Product {
     private final Category categoryName;
 
 
-    public static final Map<Long, String> addingState = new HashMap<>();
+    public static final Map<Long, String> enable = new HashMap<>();
     public static final Map<Long, String> priceState = new HashMap<>();
     public static final Map<Long, String> descriptionState = new HashMap<>();
     public static final Map<Long, String> phoneState = new HashMap<>();
