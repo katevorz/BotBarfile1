@@ -23,7 +23,7 @@ public class ProductService {
     }
 
     public void initiateSearch(long chatId) {
-        Product.addingState.put(chatId, "Searching");
+        Product.enable.put(chatId, "Searching");
         sendResponse(chatId, "Введите ключевое слово для поиска:");
     }
 
@@ -36,8 +36,8 @@ public class ProductService {
             } else {
                 sendResponse(chatId, "Неверная категория. Выберите правильную категорию:");
             }
-        } else if (Product.addingState.get(chatId).isEmpty()) {
-            Product.addingState.put(chatId, messageText);
+        } else if (Product.enable.get(chatId).isEmpty()) {
+            Product.enable.put(chatId, messageText);
             sendResponse(chatId, "Введите цену товара:");
             Product.priceState.put(chatId, null);
         } else if (Product.priceState.get(chatId) == null) {
@@ -51,7 +51,7 @@ public class ProductService {
             }
         } else if (Product.descriptionState.get(chatId).isEmpty()) {
             Product.descriptionState.put(chatId, messageText);
-            sendResponse(chatId, "Введите ваш Telegram handle (никнейм):");
+            sendResponse(chatId, "Введите ваш Telegram handle (никнейм через @):");
             Product.phoneState.put(chatId, null);
         } else if (Product.phoneState.get(chatId) == null) {
             Product.phoneState.put(chatId, messageText);
@@ -81,7 +81,7 @@ public class ProductService {
     }
 
     public void handlePhotoMessage(long chatId, Update update) {
-        String productName = Product.addingState.get(chatId);
+        String productName = Product.enable.get(chatId);
         if (productName != null && !productName.isEmpty()) {
             if (Product.categoryState.get(chatId) == null ||
                     Product.priceState.get(chatId) == null ||
@@ -105,7 +105,7 @@ public class ProductService {
             sendResponse(chatId, "Фото получено! Ваш товар был успешно добавлен.");
             sendWelcomeMessage(chatId);
 
-            Product.addingState.remove(chatId);
+            Product.enable.remove(chatId);
             Product.categoryState.remove(chatId);
             Product.priceState.remove(chatId);
             Product.descriptionState.remove(chatId);
@@ -128,7 +128,7 @@ public class ProductService {
     }
 
     public void initiateProductAddition(long chatId) {
-        Product.addingState.put(chatId, "");
+        Product.enable.put(chatId, "");
         Product.categoryState.put(chatId, null);
         sendCategorySelection(chatId);
     }
@@ -176,7 +176,7 @@ public class ProductService {
     public void sendDeleteProductPrompt(long chatId) {
         String promptText = "Введите название товара, который вы хотите удалить:";
         sendResponse(chatId, promptText);
-        Product.addingState.put(chatId, "Deleting");
+        Product.enable.put(chatId, "Deleting");
     }
 
     public void sendPhoto(long chatId, Product product) {
@@ -194,7 +194,7 @@ public class ProductService {
                 "Категория: " + product.getCategory().getName() + "\n" +
                 "Описание: " + product.getDescription() + "\n" +
                 "Цена: " + product.getPrice() + "\n" +
-                "Продавец: " + product.getTelegramHandle();
+                "Пишите сюда, если захотели купить товар, продавец: " + product.getTelegramHandle();
         photoMessage.setCaption(caption);
 
         try {
