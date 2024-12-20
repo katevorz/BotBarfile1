@@ -1,4 +1,4 @@
-package org.Baraxolkabot.Category;
+package org.Baraxolkabot.category;
 
 
 public class Category {

@@ -1,6 +1,6 @@
-package org.Baraxolkabot.BotBaraxolka;
+package org.Baraxolkabot.botBaraxolka;
 
-import org.Baraxolkabot.ProductService.ProductService;
+import org.Baraxolkabot.productService.ProductService;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 

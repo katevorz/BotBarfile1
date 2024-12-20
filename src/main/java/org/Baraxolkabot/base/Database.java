@@ -1,11 +1,12 @@
-package org.Baraxolkabot.Base;
-import org.Baraxolkabot.BotBaraxolka.Product;
+package org.Baraxolkabot.base;
+
+import org.Baraxolkabot.botBaraxolka.Product;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
-import org.Baraxolkabot.Category.Category;
+import org.Baraxolkabot.category.Category;
 
 import java.sql.*;
 import java.util.ArrayList;

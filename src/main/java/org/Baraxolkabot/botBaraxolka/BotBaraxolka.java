@@ -1,6 +1,6 @@
-package org.Baraxolkabot.BotBaraxolka;
+package org.Baraxolkabot.botBaraxolka;
 
-import org.Baraxolkabot.Category.Category;
+import org.Baraxolkabot.category.Category;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
@@ -11,6 +11,7 @@ public class BotBaraxolka extends TelegramLongPollingBot {
 
     public BotBaraxolka() {
         this.messageHandler = new MessageHandler(this);
+        //Database.getAllCategories();
         Product.categories.add(new Category("Электроника"));
         Product.categories.add(new Category("Одежда"));
         Product.categories.add(new Category("Книги"));

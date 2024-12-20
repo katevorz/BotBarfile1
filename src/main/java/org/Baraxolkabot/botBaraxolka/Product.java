@@ -1,11 +1,11 @@
-package org.Baraxolkabot.BotBaraxolka;
+package org.Baraxolkabot.botBaraxolka;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
-import org.Baraxolkabot.Category.Category;
+import org.Baraxolkabot.category.Category;
 
 public class Product {
     private final String name;

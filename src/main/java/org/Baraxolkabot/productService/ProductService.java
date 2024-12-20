@@ -1,9 +1,9 @@
-package org.Baraxolkabot.ProductService;
+package org.Baraxolkabot.productService;
 
-import org.Baraxolkabot.Base.Database;
-import org.Baraxolkabot.BotBaraxolka.Product;
-import org.Baraxolkabot.Keyboard_and_Massege_send.KeyboardUtils;
-import org.Baraxolkabot.Category.Category;
+import org.Baraxolkabot.base.Database;
+import org.Baraxolkabot.botBaraxolka.Product;
+import org.Baraxolkabot.keyboard_and_Massege_send.KeyboardUtils;
+import org.Baraxolkabot.category.Category;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;

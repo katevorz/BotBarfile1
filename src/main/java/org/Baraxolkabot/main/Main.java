@@ -1,6 +1,6 @@
-package org.Baraxolkabot.Main;
-import org.Baraxolkabot.Base.Database;
-import org.Baraxolkabot.BotBaraxolka.BotBaraxolka;
+package org.Baraxolkabot.main;
+import org.Baraxolkabot.base.Database;
+import org.Baraxolkabot.botBaraxolka.BotBaraxolka;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
